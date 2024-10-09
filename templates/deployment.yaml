@@ -81,26 +81,26 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /status.php
-              port: http
-              httpHeaders:
-              - name: Host
-                value: {{ .Values.owncloud.domain | quote }}
-            initialDelaySeconds: 120
-            timeoutSeconds: 5
-            failureThreshold: 6
-          readinessProbe:
-            httpGet:
-              path: /status.php
-              port: http
-              httpHeaders:
-              - name: Host
-                value: {{ .Values.owncloud.domain | quote }}
-            initialDelaySeconds: 30
-            timeoutSeconds: 3
-            periodSeconds: 5
+          #livenessProbe:
+          #  httpGet:
+          #    path: /status.php
+          #    port: http
+          #    httpHeaders:
+          #    - name: Host
+          #      value: {{ .Values.owncloud.domain | quote }}
+          #  initialDelaySeconds: 120
+          #  timeoutSeconds: 5
+          #  failureThreshold: 6
+          #readinessProbe:
+          #  httpGet:
+          #    path: /status.php
+          #    port: http
+          #    httpHeaders:
+          #    - name: Host
+          #      value: {{ .Values.owncloud.domain | quote }}
+          #  initialDelaySeconds: 30
+          #  timeoutSeconds: 3
+          #  periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
